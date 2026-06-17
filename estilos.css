@@ -1,0 +1,574 @@
+/* ==========================================================================
+   ESTILOS GLOBALES - Proyecto Estrés y Salud
+   ========================================================================== */
+
+:root {
+    --primary: #27ae60;    /* Verde Salud */
+    --secondary: #3498db;  /* Azul Biología */
+    --danger: #e74c3c;     /* Rojo Enfermedades */
+    --warning: #f1c40f;    /* Amarillo Alerta */
+    --stats: #9b59b6;      /* Morado Estadísticas */
+    --dark: #2c3e50;
+    --light: #f7f9fb;      /* Fondo general claro optimizado */
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+/* --- NAVEGACIÓN --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.logo span { color: var(--primary); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li { margin-left: 20px; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+/* --- CONTENEDORES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--dark);
+}
+
+/* --- ENCABEZADOS DE PÁGINAS INTERNAS --- */
+.page-header, .bio-header, .enf-header, .stats-header, .prev-header {
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bio-header { background: linear-gradient(135deg, var(--secondary), #9b59b6); }
+.enf-header { background: linear-gradient(135deg, var(--danger), #c0392b); }
+.stats-header { background: linear-gradient(135deg, var(--stats), #8e44ad); }
+.prev-header { background: linear-gradient(135deg, var(--primary), #16a085); }
+
+
+/* ==========================================================================
+   NUEVA MODIFICACIÓN VIBRANTE: PÁGINA DE INICIO (HERO HOME)
+   ========================================================================== */
+
+.hero-home {
+    height: 90vh;
+    /* Reemplazamos la imagen fija por el degradado dinámico tricolor solicitado */
+    background: linear-gradient(135deg, #0ce4ca 0%, #a217ff 50%, #ff007f 100%);
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    /* Ajustamos el overlay para dar un toque de profundidad manteniendo los colores vivos */
+    background: linear-gradient(90deg, rgba(44, 62, 80, 0.2) 30%, transparent 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero-text {
+    max-width: 650px;
+    color: white !important;
+    text-align: left;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-text h1 { 
+    font-size: 3.5rem; 
+    line-height: 1.2; 
+    margin: 15px 0; 
+    color: white !important;
+}
+
+.hero-text h1 span { 
+    color: #0ce4ca !important; /* Resalte turquesa brillante en el título */
+}
+
+.hero-text p { 
+    font-size: 1.2rem; 
+    opacity: 0.95; 
+    margin-bottom: 30px; 
+    color: white !important;
+}
+
+/* Modificación del Badge del Home (Blanco con texto oscuro e intenso) */
+.badge-home {
+    background-color: var(--white);
+    color: #1a237e;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Botones Interactivos de la Home con degradado inverso */
+.hero-btns { display: flex; gap: 15px; }
+
+.btn-main {
+    display: inline-block;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #ff007f 0%, #a217ff 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-main:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(162, 23, 255, 0.5); 
+}
+
+.btn-sub {
+    padding: 15px 30px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-sub:hover { background: white; color: var(--dark); }
+
+
+/* ==========================================================================
+   GRIDS, TARJETAS Y COMPONENTES DE LAS PÁGINAS GENERALES
+   ========================================================================== */
+
+.home-grid, .intro-grid, .diseases-grid, .counter-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+}
+
+/* Cajas de Introducción (Biología) */
+.intro-grid { margin-top: -60px; }
+
+.info-box {
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: var(--shadow);
+}
+.blue { background-color: #2980b9; }
+.green { background-color: #27ae60; }
+
+.dual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* Modificación General de Cards */
+.home-card, .type-card, .counter-card { 
+    background: white; 
+    padding: 40px; 
+    border-radius: 20px; 
+    box-shadow: var(--shadow); 
+    transition: 0.4s; 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.home-card { text-align: center; }
+.home-card-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+.home-card:hover { transform: translateY(-10px); }
+
+.home-card.bio:hover { border-bottom: 5px solid var(--secondary); }
+.home-card.enf:hover { border-bottom: 5px solid var(--danger); }
+.home-card.prev:hover { border-bottom: 5px solid var(--primary); }
+
+.type-card { text-align: left; border-top: 5px solid transparent; }
+.type-card.agudo { border-color: var(--secondary); }
+.type-card.cronico { border-color: var(--danger); }
+.type-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+
+
+/* --- ELEMENTOS COMPLEMENTARIOS (Tags e Interacción) --- */
+.tag {
+    display: inline-block;
+    background: white;
+    padding: 8px 18px;
+    margin: 6px;
+    border-radius: 50px;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.tag:hover { background: var(--secondary); color: white; }
+
+
+/* --- SECCIÓN ENFERMEDADES (Acordeón) --- */
+.accordion { max-width: 850px; margin: 0 auto; }
+
+.acc-item { background: white; margin: 10px 0; border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+
+.acc-header { 
+    padding: 20px; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    border-left: 6px solid var(--danger); 
+    font-weight: 600; 
+    color: var(--dark);
+    transition: 0.3s;
+}
+.acc-header:hover { background-color: #fffafa; }
+
+.acc-content { max-height: 0; overflow: hidden; transition: 0.3s ease; padding: 0 20px; color: #666; }
+
+.acc-item.active .acc-content { max-height: 500px; padding: 20px; border-top: 1px solid #eee; }
+
+
+/* --- TABLAS ESTADÍSTICAS --- */
+.indicadores-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Estilo base estructural para los cuadros estadísticos */
+.card {
+    background: var(--color-blanco);
+    border-radius: 16px;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #eceff1;
+    /* Transición súper suave para el movimiento, brillo y bordes */
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.35s ease;
+    cursor: pointer;
+}
+
+/* Clases específicas de color según la imagen de tu interfaz */
+.card-purple {
+    border-top: 5px solid var(--color-secundario);
+}
+
+.card-orange {
+    border-top: 5px solid var(--color-acento);
+}
+
+/* Formato de los números gigantes (3.4x, 45%, etc.) */
+.card h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-purple h3 { color: var(--color-secundario); }
+.card-orange h3 { color: var(--color-acento); }
+
+.card p {
+    font-size: 14.5px;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+.card p strong {
+    color: #1a202c;
+}
+
+
+/* --- SECCIÓN PREVENCIÓN (Tarjetas de Pasos Avanzadas) --- */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step-card {
+    background: white;
+    border-radius: 24px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+    transition: all 0.4s ease;
+}
+
+.step-card h3 { font-size: 1.4rem; color: #2c3e50; margin-bottom: 12px; transition: color 0.3s ease; }
+.step-card p { font-size: 0.95rem; color: #64748b; line-height: 1.6; transition: color 0.3s ease; }
+
+/* Hover dinámico tridimensional de prevención */
+.step-card.fisico:hover {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(46, 204, 113, 0.4);
+    border-color: #27ae60;
+}
+.step-card.mental:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(52, 152, 219, 0.4);
+    border-color: #2980b9;
+}
+.step-card.social:hover {
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(155, 89, 182, 0.4);
+    border-color: #8e44ad;
+}
+
+.step-card:hover h3, .step-card:hover p { color: white; }
+.step-card:hover .icon-circle { background: rgba(255, 255, 255, 0.25); transform: scale(1.15) rotate(15deg); }
+
+.alerta-box {
+    background: #fff5f5;
+    border: 2px dashed var(--danger);
+    padding: 35px;
+    border-radius: 15px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+
+/* --- SECCIÓN RECURSOS AUDIOVISUALES (VIDEO PLAYER) --- */
+.video-section {
+    margin: 60px auto 30px;
+    max-width: 850px;
+    background: white;
+    padding: 35px;
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.video-section h3 { font-size: 1.6rem; color: #2c3e50; margin-bottom: 8px; }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0; 
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    margin: 25px 0;
+}
+
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+.btn-video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-video-link:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(231, 76, 60, 0.5); }
+
+
+/* ==========================================================================
+   PÁGINA DE REFERENCIAS BIBLIOGRÁFICAS (DISEÑO GRID INTERACTIVO)
+   ========================================================================== */
+
+.referencias-page {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    font-family: 'Lato', sans-serif;
+}
+
+.ref-header-banner {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+    border-bottom: 5px solid #3498db;
+}
+
+.ref-header-banner h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; margin-bottom: 10px; letter-spacing: -0.5px; }
+
+.container-ref { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px; }
+
+.references-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+
+.ref-tile {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ref-tile:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(52, 152, 219, 0.15);
+    border-color: #3498db;
+}
+
+.ref-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    transition: transform 0.3s ease;
+}
+
+.ref-tile:hover .ref-icon { transform: scale(1.1) rotate(5deg); }
+
+.cat-bio  { background: #e0f2fe; color: #0284c7; }
+.cat-stat { background: #f3e8ff; color: #7e22ce; }
+.cat-econ { background: #fef3c7; color: #d97706; }
+.cat-fis  { background: #e8f8f5; color: #27ae60; }
+.cat-neu  { background: #eaeded; color: #34495e; }
+
+.tag-bio  { background: #0284c7; }
+.tag-stat { background: #7e22ce; }
+.tag-econ { background: #d97706; }
+
+.ref-citation { font-size: 0.98rem; line-height: 1.6; color: #334155; margin-bottom: 20px; flex-grow: 1; text-align: left !important; }
+
+.ref-application {
+    font-size: 0.88rem;
+    color: #64748b;
+    background: #f8fafc;
+    padding: 14px;
+    border-radius: 12px;
+    border-left: 4px solid #cbd5e1;
+    text-align: left !important;
+    transition: all 0.3s ease;
+}
+
+.ref-tile:hover .ref-application { background: #f0f7ff; border-left-color: #3498db; color: #1e3a8a; }
+
+/* Animación sutil escalonada de referencias */
+.ref-card { opacity: 0; transform: translateY(15px); animation: fadeInUp 0.6s forwards cubic-bezier(0.25, 1, 0.5, 1); }
+.ref-card:nth-child(1) { animation-delay: 0.1s; }
+.ref-card:nth-child(2) { animation-delay: 0.2s; }
+.ref-card:nth-child(3) { animation-delay: 0.3s; }
+.ref-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+
+/* ==========================================================================
+   PIE DE PÁGINA Y REGLAS ADAPTATIVAS (RESPONSIVIDAD)
+   ========================================================================== */
+
+.footer {
+    background: var(--dark);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-text h1 { font-size: 2.3rem; }
+    .section-title { font-size: 2rem; }
+    .home-grid, .intro-grid, .references-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .ref-header-banner h1 { font-size: 1.8rem; }
+}
