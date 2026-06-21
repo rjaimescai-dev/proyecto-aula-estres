@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrés y Salud | Ruleta</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="ruleta-page">
+    <div id="progress-bar"></div>
+    <nav class="navbar">
+        <div class="logo">Cortisol Off<span></span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="biologia.html">Biología</a></li>
+            <li><a href="enfermedades.html">Enfermedades</a></li>
+            <li><a href="estadisticas.html">Estadísticas</a></li>
+            <li><a href="prevencion.html">Prevención</a></li>
+            <li><a href="referencias.html">Referencias</a></li>
+            <li><a href="ruleta.html">Ruleta</a></li>
+        </ul>
+    </nav>
+
+    <header class="ruleta-header">
+        <h1>Sorteo de Participantes</h1>
+        <p>¡Gira la ruleta para conocer a los 5 afortunados!</p>
+    </header>
+
+    <section class="container ruleta-container">
+        <div class="ruleta-wrapper">
+            <div class="ruleta-box">
+                <canvas id="ruletaCanvas" width="500" height="500"></canvas>
+                <div class="ruleta-pointer"></div>
+            </div>
+            <button id="btnGirar" class="btn-main" disabled>Cargando Participantes...</button>
+            <div id="winnerDisplay" class="winner-display hidden">
+                <h3>¡Felicidades!</h3>
+                <p id="winnerName">---</p>
+                <p id="winnerCount">Ganadores: <span id="winnersCountValue">0</span>/5</p>
+            </div>
+        </div>
+        
+        <div class="participantes-panel">
+            <h3>Lista de Participantes <span id="participantsCount">(0)</span></h3>
+            <ul id="listaParticipantes" class="participants-list">
+                <!-- Se llenará con JS -->
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>| GRUPO 6IM11 | CECyT 5 "Benito Juárez"</p>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    
+    <!-- Lógica principal y ruleta -->
+    <script src="script.js"></script>
+    <script src="ruleta.js"></script>
+</body>
+</html>

@@ -1,4 +1,16 @@
+// Configuración de Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCL1kKk4EpK7RrWqcii9E84gzuWjsiMHKA",
+    authDomain: "proyecto-aula-rifa.firebaseapp.com",
+    projectId: "proyecto-aula-rifa",
+    storageBucket: "proyecto-aula-rifa.firebasestorage.app",
+    messagingSenderId: "1030213959507",
+    appId: "1:1030213959507:web:bee42883efd4a8e686eba6"
+};
 
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 document.addEventListener('DOMContentLoaded', () => {
     
