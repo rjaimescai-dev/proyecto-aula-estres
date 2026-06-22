@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('ruletaCanvas');
     if (!canvas) return; // Solo ejecutar si estamos en ruleta.html
 
+    // --- PROTECCIÓN POR CONTRASEÑA ---
+    const password = prompt("Seguridad: Ingresa la contraseña de presentador para acceder al sorteo:");
+    if (password !== "aula2026") {
+        alert("Acceso denegado. Redirigiendo a la página principal...");
+        window.location.href = "index.html";
+        return; // Detener la ejecución del script
+    }
+    // ---------------------------------
+
     const ctx = canvas.getContext('2d');
     const btnGirar = document.getElementById('btnGirar');
     const listaParticipantesHTML = document.getElementById('listaParticipantes');

@@ -9,8 +9,10 @@ const firebaseConfig = {
 };
 
 // Inicializar Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+if (typeof firebase !== 'undefined') {
+    firebase.initializeApp(firebaseConfig);
+    window.database = firebase.database();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     
